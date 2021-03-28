@@ -1,10 +1,8 @@
-from dotenv import load_dotenv
 from flask import Flask, jsonify
 
 from database.database import db
 
 app = Flask(__name__)
-load_dotenv()
 
 
 # Home route
