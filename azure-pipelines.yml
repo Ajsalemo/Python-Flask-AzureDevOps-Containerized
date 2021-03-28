@@ -15,7 +15,7 @@ variables:
   containerRegistry: 'ansalemocontainerregistry.azurecr.io'
   dockerfilePath: './Dockerfile'
   tag: '$(Build.BuildId)'
-  webApp: 'pythonazuredevopscontainerized'
+  webApp: 'Python-AzureDevOps-Containerized'
   azureSubscription: 'Ansalemo(4388fa06-bf66-4497-82c2-991ba75ecb97)'
 
   # Agent VM image name
