@@ -1,9 +1,7 @@
 from dotenv import load_dotenv
-
 from flask import Flask, jsonify
 
 from database.database import db
-
 
 app = Flask(__name__)
 load_dotenv()
@@ -18,10 +16,13 @@ def hello_world():
 # Get all AirBNB rental data
 @app.route('/all_restaurants')
 def all_restaurants():
+    all_restaurants_arr = []
     # the find() method finds the 'restaurants' collection
+    # the optional arguments do the following - pos. 0 ({}), returns the entire collection - pos. 1 ({"_id": 0}) removes the _id property, or else an exception is thrown due to the way _id is formatted
     # the limit() method limits the results to 20 since the collection has over 25k results
-    get_all_restaurants = db.restaurants.find().limit(20)
+    get_all_restaurants = db.restaurants.find({}, {"_id": 0}).limit(20)
     for restaurants in get_all_restaurants:
-        print(restaurants)
-    return "Test"
+        # Append a document to the array for each iteration
+        all_restaurants_arr.append(restaurants)
+    return jsonify(all_restaurants_arr)
 
