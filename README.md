@@ -3,7 +3,7 @@ A small Flask API that connects to Mongo Atlas and is deployed using Azure DevOp
 
 <br>
 
-### Build an run
+### Build and run
 For continuous deployment and integration - update the azure-pipelines.yml to your credentials.
 Replace the following environment variables to run locally:
 - MONGO_ATLAS_USERNAME (your Mongo Atlas username)
