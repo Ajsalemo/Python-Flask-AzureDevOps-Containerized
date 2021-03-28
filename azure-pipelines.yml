@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: '88c65941-e6fa-4fe3-98b6-48b16bc27c9a'
   imageRepository: 'pythonazuredevopscontainerized'
   containerRegistry: 'ansalemocontainerregistry.azurecr.io'
-  dockerfilePath: '.'
+  dockerfilePath: './Dockerfile'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
