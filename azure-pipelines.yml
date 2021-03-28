@@ -16,7 +16,7 @@ variables:
   dockerfilePath: './Dockerfile'
   tag: '$(Build.BuildId)'
   webApp: 'pythonazuredevopscontainerized'
-  azureSubscription: '4388fa06-bf66-4497-82c2-991ba75ecb97'
+  azureSubscription: 'Ansalemo(4388fa06-bf66-4497-82c2-991ba75ecb97)'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
@@ -45,13 +45,14 @@ stages:
   - job: Deploy
     displayName: Deploy
     steps:
-    - task: AzureRMWebAppDeployment@4
-      displayName: Azure App Service Deploy
+    - task: AzureRmWebAppDeployment@4
       inputs:
-        appType: webAppContainer
-        ConnectedServiceName: $(azureSubscription)   
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Ansalemo(4388fa06-bf66-4497-82c2-991ba75ecb97)'
+        appType: 'webAppContainer'
         WebAppName: $(webApp)
         DockerNamespace: $(containerRegistry) 
         DockerRepository: $(imageRepository) 
         DockerImageTag: $(tag)
+
 
