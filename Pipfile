@@ -7,6 +7,9 @@ verify_ssl = true
 
 [packages]
 flask = "*"
+flask-pymongo = "*"
+dnspython = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.8"
