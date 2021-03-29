@@ -1,3 +1,5 @@
+from contextlib import closing
+
 from flask import Flask, json, jsonify
 
 from database.database import db
@@ -32,8 +34,20 @@ def all_restaurants():
 # Find a restaurant by name
 @app.route('/restaurant/<name>')
 def find_restaurant(name):
-    print(name)
-    return jsonify({"message": f"Searching for {name}"})
+    try:
+        # the find() method finds the 'restaurants' collection
+        # the optional arguments do the following - pos. 0 ({"name": name}), returns documents matching the parameter - pos. 1 ({"_id": 0}) removes the _id property, or else an exception is thrown due to the way _id is formatted
+        restaurants_by_name_arr = []
+        find_restaurant_by_name = db.restaurants.find({"name": name},  {"_id": 0})
+        for name in find_restaurant_by_name:
+            # Append a document to the array for each iteration
+            restaurants_by_name_arr.append(name)
+        # If there are no results returned by the search then display an informational message
+        if (len(restaurants_by_name_arr) < 1):
+            return jsonify({"result": f"No restaurants found with the name {name}"})
+        return jsonify(restaurants_by_name_arr)
+    except Exception as e:
+        print(f"An error has occurred while trying to retrieve results: {e}")
 
 
 # HTTP 404 not found catch all route
