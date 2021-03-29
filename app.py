@@ -50,10 +50,28 @@ def find_restaurant(name):
         print(f"An error has occurred while trying to retrieve results: {e}")
 
 
+# Find restaurants by cuisine type
+@app.route('/restaurant/cuisine/<cuisine>')
+def find_restaurant_by_cuisine(cuisine):
+    print(cuisine)
+
+
 # HTTP 404 not found catch all route
 @app.errorhandler(404)
 def page_not_found(e):
     # note that we set the 404 status explicitly
     return jsonify({"error": "HTTP 404 - Page Not Found"}), 404
+
+
+# HTTP 500 internal server error catch all route
+@app.errorhandler(500)
+def page_not_found(e):
+    # note that we set the 500 status explicitly
+    return jsonify({"error": "HTTP 500 - An Internal Server Error has occurred"}), 500
     
 
+# HTTP 502 gateway timeout error catch all route
+@app.errorhandler(502)
+def page_not_found(e):
+    # note that we set the 502 status explicitly
+    return jsonify({"error": "HTTP 502 - An Gateway Timeout has occurred"}), 502
