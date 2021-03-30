@@ -18,22 +18,70 @@
     }
   ],
   "paths": {
-      "/api/v1/all_restaurants": {
-          "get": {
-              "tags": ["Get all restaurant information"],
-              "summary": "Get all restaurant information",
-              "responses": {
-                  "200": {
-                      "description": "Returns a JSON response of objects containing information on restaurants"
-                  },
-                  "500": {
-                      "description": "Returns a HTTP 500 if an Internal Server Error occured"
-                  },
-                  "502": {
-                      "description": "Returns a HTTP 502 if the upstream gateway has timed out or cannot be reached"
-                  }
-              }
+    "/api/v1/all_restaurants": {
+      "get": {
+        "tags": ["Get all restaurant information"],
+        "summary": "Get all restaurant information",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON response of objects containing information on restaurants"
+          },
+          "500": {
+            "description": "Returns a HTTP 500 if an Internal Server Error occured"
+          },
+          "502": {
+            "description": "Returns a HTTP 502 if the upstream gateway has timed out or cannot be reached"
           }
+        }
       }
+    },
+    "/api/v1/restaurant/{name}": {
+      "parameters": {
+        "name": "name",
+        "in": "path",
+        "required": true,
+        "description": "Name of the restaurant",
+        "type": "string"
+      },
+      "get": {
+        "tags": ["Get information about a specific restaurant"],
+        "summary": "Get information about a specific restaurant",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON response containing information about the specific restaurant"
+          },
+          "500": {
+            "description": "Returns a HTTP 500 if an Internal Server Error occured"
+          },
+          "502": {
+            "description": "Returns a HTTP 502 if the upstream gateway has timed out or cannot be reached"
+          }
+        }
+      }
+    },
+    "/api/v1/restaurant/cuisine/{cuisine}": {
+      "parameters": {
+        "name": "cuisine",
+        "in": "path",
+        "required": true,
+        "description": "Find restaurants that match the cuisine type",
+        "type": "string"
+      },
+      "get": {
+        "tags": ["Find restaurants that match the cuisine type"],
+        "summary": "Find restaurants that match the cuisine type",
+        "responses": {
+          "200": {
+            "description": "Returns a JSON response containing information about the specific restaurant"
+          },
+          "500": {
+            "description": "Returns a HTTP 500 if an Internal Server Error occured"
+          },
+          "502": {
+            "description": "Returns a HTTP 502 if the upstream gateway has timed out or cannot be reached"
+          }
+        }
+      }
+    }
   }
 }
