@@ -1,0 +1,39 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "CI/CD Deployment with Azure Container Registry and DevOps pipelines",
+    "version": "1.0.0",
+    "title": "Python-AzureDevOps-COntainerized",
+    "contact": {
+      "email": "ajssalemo@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+      "/api/v1/all_restaurants": {
+          "get": {
+              "tags": ["Get all restaurant information"],
+              "summary": "Get all restaurant information",
+              "responses": {
+                  "200": {
+                      "description": "Returns a JSON response of objects containing information on restaurants"
+                  },
+                  "500": {
+                      "description": "Returns a HTTP 500 if an Internal Server Error occured"
+                  },
+                  "502": {
+                      "description": "Returns a HTTP 502 if the upstream gateway has timed out or cannot be reached"
+                  }
+              }
+          }
+      }
+  }
+}

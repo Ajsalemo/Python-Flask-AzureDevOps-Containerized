@@ -1,10 +1,23 @@
 from flask import Flask, jsonify
+from flask_swagger_ui import get_swaggerui_blueprint
 
 from database.database import db
 from helpers.helpers import loop_through_response
 
 app = Flask(__name__)
 
+### Swagger specific ###
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={
+        'app_name': "Python-AzureDevOps-Containerized"
+    }
+)
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
+### End swagger specific ###
 
 # Home route
 @app.route('/')
@@ -13,7 +26,7 @@ def hello_world():
 
 
 # Get all AirBNB rental data
-@app.route('/all_restaurants')
+@app.route('/api/v1/all_restaurants')
 def all_restaurants():
     try:
         all_restaurants_arr = []
@@ -29,7 +42,7 @@ def all_restaurants():
 
 
 # Find a restaurant by name
-@app.route('/restaurant/<name>')
+@app.route('/api/v1/restaurant/<name>')
 def find_restaurant(name):
     try:
         # the find() method finds the 'restaurants' collection
@@ -43,7 +56,7 @@ def find_restaurant(name):
 
 
 # Find restaurants by cuisine type
-@app.route('/restaurant/cuisine/<cuisine>')
+@app.route('/api/v1/restaurant/cuisine/<cuisine>')
 def find_restaurant_by_cuisine(cuisine):
     try:
         # the find() method finds the 'restaurants' collection
