@@ -17,7 +17,7 @@ RUN apt-get update \
     && echo "$SSH_PASSWD" | chpasswd \
     && chmod +x /app/init_container.sh
 
-EXPOSE 8000
+EXPOSE 8000 2222
 
 # Run the bash script to start Flask
 ENTRYPOINT [ "/app/init_container.sh" ]
