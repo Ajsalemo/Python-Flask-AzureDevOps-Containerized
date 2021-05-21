@@ -1,7 +1,10 @@
 FROM python:3.8-slim
 
 # SSH password
-ENV SSH_PASSWD "root:Docker!"
+ENV SSH_PASSWD "nonroot:NonRoot!"
+
+RUN useradd -u nonroot
+USER nonroot
 
 COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
