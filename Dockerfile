@@ -3,8 +3,6 @@ FROM python:3.8-slim
 # SSH password
 ENV SSH_PASSWD "root:Docker!"
 
-RUN useradd -u 7777 nonroot
-
 COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
 RUN pip install -r requirements.txt
@@ -18,10 +16,6 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends openssh-server \
     && echo "$SSH_PASSWD" | chpasswd \
     && chmod +x /app/init_container.sh
-
-RUN service ssh start
-
-USER nonroot
 
 EXPOSE 8000 2222
 
