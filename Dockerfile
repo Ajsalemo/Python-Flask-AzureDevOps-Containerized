@@ -19,6 +19,8 @@ RUN apt-get update \
     && echo "$SSH_PASSWD" | chpasswd \
     && chmod +x /app/init_container.sh
 
+RUN service ssh start
+
 USER nonroot
 
 EXPOSE 8000 2222
