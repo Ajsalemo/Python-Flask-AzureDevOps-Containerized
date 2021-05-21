@@ -1,7 +1,7 @@
 FROM python:3.8-slim
 
 # SSH password
-ENV SSH_PASSWD "nonroot:NonRoot!"
+ENV SSH_PASSWD "root:Docker!"
 
 RUN useradd -u 7777 nonroot
 
