@@ -3,7 +3,7 @@ FROM python:3.8-slim
 # SSH password
 ENV SSH_PASSWD "nonroot:NonRoot!"
 
-RUN useradd -u nonroot
+RUN useradd -u 7777 nonroot
 USER nonroot
 
 COPY ./requirements.txt /app/requirements.txt
