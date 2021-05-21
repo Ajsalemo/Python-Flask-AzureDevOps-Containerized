@@ -4,7 +4,6 @@ FROM python:3.8-slim
 ENV SSH_PASSWD "nonroot:NonRoot!"
 
 RUN useradd -u 7777 nonroot
-USER nonroot
 
 COPY ./requirements.txt /app/requirements.txt
 WORKDIR /app
@@ -19,6 +18,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends openssh-server \
     && echo "$SSH_PASSWD" | chpasswd \
     && chmod +x /app/init_container.sh
+
+USER nonroot
 
 EXPOSE 8000 2222
 
