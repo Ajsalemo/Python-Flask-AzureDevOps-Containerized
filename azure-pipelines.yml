@@ -50,7 +50,7 @@ stages:
         ConnectionType: 'AzureRM'
         azureSubscription: 'Ansalemo(4388fa06-bf66-4497-82c2-991ba75ecb97)'
         appType: 'webAppContainer'
-        AppSettings: '-WEBSITES_PORT 8000 -WEBSITE_HTTPLOGGING_RETENTION_DAYS 10'
+        AppSettings: '-WEBSITES_PORT 8000 -WEBSITE_HTTPLOGGING_RETENTION_DAYS 10 -HTTP_LOGGING_ENABLED 1'
         WebAppName: $(webApp)
         DockerNamespace: $(containerRegistry) 
         DockerRepository: $(imageRepository) 
