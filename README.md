@@ -1,4 +1,4 @@
-# Python-AzureDevOps-Containerized
+# Python-Flask-AzureDevOps-Containerized
 A small Flask API that connects to Mongo Atlas and is deployed using Azure DevOps which builds and pushes an updated Docker Image each commit to Azure Container Registry.
 
 <br>
