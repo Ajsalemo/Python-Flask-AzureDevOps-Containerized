@@ -22,7 +22,7 @@ app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 # Home route
 @app.route('/')
 def hello_world():
-    return 'Python-AzureDevOps-Containerized'
+    return 'Python-AzureDevOps-Containerized | Mongo Atlas'
 
 
 # Get all AirBNB rental data
